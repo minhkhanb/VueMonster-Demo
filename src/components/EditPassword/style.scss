@@ -1,0 +1,41 @@
+.edit_pass {
+  position: absolute;
+  right: 0;
+  top: 0;
+  width: 330px;
+  max-width: 100%;
+  border-radius: 2px;
+  box-shadow: 0 3px 1px -2px rgba(0, 0, 0, 0.2), 0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 1px 5px 0 rgba(0, 0, 0, 0.12);
+  height: 100%;
+  background: #fff;
+  z-index: 999;
+}
+.formContent .btnEdit {
+  background: none;
+  border-radius: 20px;
+  border: 1px solid #ccc;
+  padding: 0 20px;
+}
+.formContent .btnSubmit {
+  background: #f55f37;
+  color: #fff;
+  border-radius: 20px;
+  padding: 0 20px;
+}
+.md-button {
+  font-size: 12px;
+}
+.md-card {
+  border-radius: 2px;
+  box-shadow: none
+}
+.icon-left {
+  position: absolute;
+  top: 30px;
+  left: -20px;
+  background: orangered;
+  color: #fff;
+  padding: 2px 10px;
+  border-radius: 4px;
+  cursor: pointer;
+}

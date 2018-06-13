@@ -1,0 +1,57 @@
+<div class="edit_pass">
+    <form novalidate class="md-layout" @submit.prevent="validateUser">
+        <md-card class="md-layout-item md-size-100 md-small-size-100 formContent">
+            <md-card-header>
+                <div class="icon-left">
+                    <font-awesome-icon icon="arrow-left"></font-awesome-icon>
+                </div>
+                <h2>Edit Password</h2>
+            </md-card-header>
+            <md-card-content>
+                <div class="md-layout md-gutter">
+                    <div class="md-layout-item md-small-size-100">
+                        <md-field :class="getValidationClass('current_password')">
+                            <label for="current_password">Current Password</label>
+                            <md-input type="password" name="current_password" id="current_password" autocomplete="given-name" v-model="form.current_password" :disabled="sending" />
+                            <span class="md-error" v-if="!$v.form.current_password.required">The current password is required</span>
+                            <span class="md-error" v-else-if="!$v.form.current_password.minlength">The current password wrong</span>
+                        </md-field>
+                    </div>
+
+                    <div class="md-layout-item md-small-size-100">
+                        <md-field :class="getValidationClass('new_password')">
+                            <label for="new_password">New Password</label>
+                            <md-input type="password" name="new_password" id="new_password" autocomplete="family-name" v-model="form.new_password" :disabled="sending" />
+                            <span class="md-error" v-if="!$v.form.new_password.required">The new password is required</span>
+                            <span class="md-error" v-else-if="!$v.form.new_password.minlength">The new password must be more than 3 character</span>
+                        </md-field>
+                    </div>
+
+                    <div class="md-layout-item md-small-size-100">
+                        <md-field :class="getValidationClass('new_password')">
+                            <label for="new_password">New Password</label>
+                            <md-input type="password" name="new_password" id="confirm_password" autocomplete="family-name" v-model="form.confirm_password" :disabled="sending" />
+                            <span class="md-error" v-if="!$v.form.confirm_password.required">The confirm password is required</span>
+                            <span class="md-error" v-else-if="!$v.form.confirm_password.minlength">The confirm password must be more than 3 character</span>
+                        </md-field>
+                    </div>
+
+                </div>
+
+                <md-field :class="getValidationClass('email')">
+                    <label for="email_update">Email</label>
+                    <md-input type="email" name="email_update" id="email_update" autocomplete="email_update" v-model="form.email" :disabled="sending" />
+                    <span class="md-error" v-if="!$v.form.email_update.required">The email is required</span>
+                    <span class="md-error" v-else-if="!$v.form.email.email_update">Invalid email</span>
+                </md-field>
+            </md-card-content>
+
+            <md-progress-bar md-mode="indeterminate" v-if="sending" />
+
+            <md-card-actions class="md-alignment-left">
+                <md-button type="submit" class="md-accent btnSubmit" :disabled="sending">Validate</md-button>
+                <md-button type="button" class="md-primary btnEdit" :disabled="sending">Cancel</md-button>
+            </md-card-actions>
+        </md-card>
+    </form>
+</div>

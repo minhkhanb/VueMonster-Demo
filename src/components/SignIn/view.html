@@ -1,0 +1,36 @@
+<div class="content">
+    <form novalidate class="md-layout" @submit.prevent="validateUser">
+        <md-card class="md-layout-item md-size-100 md-small-size-100">
+            <md-card-header>
+                <div class="md-title">Sign in</div>
+            </md-card-header>
+
+            <md-card-content>
+                <div class="md-layout-item md-small-size-100">
+                    <md-field :class="getValidationClass('email')">
+                        <label for="email">Email</label>
+                        <md-input type="email" name="email" id="email" autocomplete="email" v-model="form.email"
+                                  :disabled="sending"/>
+                        <span class="md-error" v-if="!$v.form.email.required">The email is required</span>
+                        <span class="md-error" v-else-if="!$v.form.email.email">Invalid email</span>
+                    </md-field>
+                </div>
+                <div class="md-layout-item md-small-size-100">
+                    <md-field :class="getValidationClass('password')">
+                        <label for="password">Password</label>
+                        <md-input type="password" name="password" id="password" v-model="form.password"
+                                  :disabled="sending"/>
+                        <span class="md-error" v-if="!$v.form.password.required">The password is required</span>
+                        <span class="md-error" v-else-if="!$v.form.password.password">The password is minimum 3 character</span>
+                    </md-field>
+                </div>
+                <div class="md-layout-item md-small-size-100">
+                    <md-button type="submit" class="md-primary btnSubmit" :disabled="sending">Sign In</md-button>
+                    <div class="md-layout-item md-small-size-100">
+                        <a href="#">Forgot password?</a>
+                    </div>
+                </div>
+            </md-card-content>
+        </md-card>
+    </form>
+</div>

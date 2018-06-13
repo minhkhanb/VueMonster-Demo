@@ -1,0 +1,68 @@
+nav ul,
+.breadc ul {
+  list-style-type: none;
+  padding: 0;
+  text-align: left;
+}
+.md-theme-default ul a {
+  color: #ccc;
+  text-decoration: none;
+}
+
+.md-theme-default ul a:hover {
+  color: #fff;
+}
+
+header {
+  background: #161616;
+  padding: 20px 30px;
+}
+
+header nav {
+  padding-top: 5px;
+  margin-bottom: 30px
+}
+.breadc a {
+  font-size: 24px;
+  color: #fff;
+
+}
+.notification .separator a {
+  color: #ccc;
+  text-decoration: none;
+  font-size: 12px;
+}
+.md-progress-bar {
+  position: absolute;
+  top: 0;
+  right: 0;
+  left: 0;
+}
+.formContent {
+  margin: 20px auto 0;
+  -webkit-box-shadow: none;
+  -moz-box-shadow: none;
+  box-shadow: none;
+}
+main .md-avatar {
+  width: 130px;
+  height: 130px;
+  min-width: 130px;
+  border-radius: 100%;
+}
+.md-card-actions .md-button {
+  margin-left: auto;
+  margin-right: auto;
+}
+.formContent .btnEdit {
+  background: none;
+  border-radius: 20px;
+  border: 1px solid #ccc;
+  padding: 0 30px;
+}
+.formContent .btnSubmit {
+  background: #f55f37;
+  color: #fff;
+  border-radius: 20px;
+  padding: 0 40px;
+}

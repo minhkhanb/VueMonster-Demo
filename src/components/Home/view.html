@@ -1,0 +1,88 @@
+<div class="wrapper">
+    <header>
+        <div class="md-layout md-gutter">
+            <div class="md-layout-item md-size-80">
+                <nav>
+                    <ul>
+                        <li>
+                            <a href="#">Dashboard</a>
+                        </li>
+                    </ul>
+                </nav>
+            </div>
+            <div class="md-layout-item md-size-15">
+                <div class="notification">
+                    <div class="separator">
+                        <md-avatar class="md-small">
+                            <img src="./images/avatar.png" alt="People">
+                        </md-avatar>
+                        <a href="#">Michael</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="md-layout md-gutter breadc">
+            <div class="md-layout-item md-size-100 md-o">
+                <ul>
+                    <li><a href="#">Profile</a></li>
+                </ul>
+            </div>
+        </div>
+    </header>
+    <main>
+        <div>
+            <form novalidate class="md-layout" @submit.prevent="validateUser">
+                <md-card class="md-layout-item md-size-50 md-small-size-100 formContent">
+                    <md-card-header>
+
+                    </md-card-header>
+                    <md-card-content>
+                        <div class="md-layout md-gutter">
+                            <div class="md-layout-item md-small-size-100">
+                                <div class="separator">
+                                    <md-avatar class="md-large-size-100">
+                                        <img src="./images/avatar.png" alt="People">
+                                    </md-avatar>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="md-layout md-gutter">
+                            <div class="md-layout-item md-small-size-100">
+                                <md-field :class="getValidationClass('firstName')">
+                                    <label for="first-name">First Name</label>
+                                    <md-input name="first-name" id="first-name" autocomplete="given-name" v-model="form.firstName" :disabled="sending" />
+                                    <span class="md-error" v-if="!$v.form.firstName.required">The first name is required</span>
+                                    <span class="md-error" v-else-if="!$v.form.firstName.minlength">Invalid first name</span>
+                                </md-field>
+                            </div>
+
+                            <div class="md-layout-item md-small-size-100">
+                                <md-field :class="getValidationClass('lastName')">
+                                    <label for="last-name">Last Name</label>
+                                    <md-input name="last-name" id="last-name" autocomplete="family-name" v-model="form.lastName" :disabled="sending" />
+                                    <span class="md-error" v-if="!$v.form.lastName.required">The last name is required</span>
+                                    <span class="md-error" v-else-if="!$v.form.lastName.minlength">Invalid last name</span>
+                                </md-field>
+                            </div>
+                        </div>
+
+                        <md-field :class="getValidationClass('email')">
+                            <label for="email">Email</label>
+                            <md-input type="email" name="email" id="email" autocomplete="email" v-model="form.email" :disabled="sending" />
+                            <span class="md-error" v-if="!$v.form.email.required">The email is required</span>
+                            <span class="md-error" v-else-if="!$v.form.email.email">Invalid email</span>
+                        </md-field>
+                    </md-card-content>
+
+                    <md-progress-bar md-mode="indeterminate" v-if="sending" />
+
+                    <md-card-actions>
+                        <md-button type="button" class="md-primary btnEdit" :disabled="sending">Edit Password</md-button>
+                        <md-button type="submit" class="md-accent btnSubmit" :disabled="sending">Validate</md-button>
+                    </md-card-actions>
+                </md-card>
+            </form>
+        </div>
+        <appEditPassWord/>
+    </main>
+</div>
