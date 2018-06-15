@@ -26,6 +26,9 @@ import axios from 'axios'
 
 import store from './store'
 
+import vSelect from 'vue-select'
+Vue.component('v-select', vSelect)
+
 Vue.use(VueAxios, axios)
 
 Vue.use(VueMaterial);

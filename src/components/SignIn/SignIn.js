@@ -7,6 +7,9 @@ import {
 } from 'vuelidate/lib/validators'
 
 import {AUTH_REQUEST} from '../../store/actions/auth'
+import store from '../../store'
+
+let state_error = 0;
 
 export default {
     name: 'FormValidation',
@@ -17,7 +20,9 @@ export default {
             password: null
         },
         users: null,
-        sending: false
+        sending: false,
+        msg: '',
+        visible: false
     }),
     mounted () {
       // if (true) {
@@ -62,9 +67,43 @@ export default {
         login () {
           const { email, password } = this.form;
           console.log(email + '-' + password);
-           this.$store.dispatch(AUTH_REQUEST, { email, password }).then(() => {
-             this.$router.push('/profile')
-           })
+          console.log('dddfef ',store.state);
+          if(this.isExistUser()) {
+            state_error = 0;
+            this.$store.dispatch(AUTH_REQUEST, { email, password }).then((res) => {
+              console.log(JSON.stringify(res, null, 2));
+              this.$router.push('/profile')
+            })
+          }
+          else {
+            //show error no exist user
+            switch(state_error) {
+              case 1:
+                  this.msg = 'The email not exist!'
+                break;
+
+              case 2:
+                  this.msg = 'Wrong password!'
+                break;
+            }
+
+            if (state_error > 0) {
+              this.visible = true;
+            }
+          }
+        },
+        isExistUser () {
+          const { email, password } = this.form;
+          console.log('pass -dbpass ' + password + '-' + store.state.user.profile.password);
+          if(email != store.state.user.profile.email) {
+            state_error = 1;
+            return false;
+          }
+          else if(password != store.state.user.profile.password) {
+            state_error = 2;
+            return false;
+          }
+          return true;
         },
         validateUser () {
             this.$v.$touch()

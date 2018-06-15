@@ -57,3 +57,6 @@
   color: #3e4450;
   font-size: 16px;
 }
+.signin .alert[isShowError='false'] {
+  display: none;
+}

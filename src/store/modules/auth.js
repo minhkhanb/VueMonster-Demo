@@ -20,6 +20,7 @@ const actions = {
         // Here set the header of your ajax library to the token value.
         // example with axios
         // axios.defaults.headers.common['Authorization'] = resp.token
+        console.log(user);
         commit(AUTH_SUCCESS, resp)
         dispatch(USER_REQUEST)
         resolve(resp)
@@ -27,7 +28,7 @@ const actions = {
       .catch(err => {
         commit(AUTH_ERROR, err)
         localStorage.removeItem('user-token')
-        reject(err)
+          reject(err)
       })
     })
   },

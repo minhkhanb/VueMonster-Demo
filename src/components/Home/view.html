@@ -24,10 +24,14 @@
                                 <img src="./images/avatar.png" alt="People">
                             </md-avatar>
                           </button>
-                          <div>
-                            <b-dropdown id="ddown1" text=title class="m-md-2">
-                              <b-dropdown-item v-on:click="logout()">Logout</b-dropdown-item>
-                            </b-dropdown>
+                          <div class="btn-group" role="group">
+                            <button v-on:click="toggleDropDown()" type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                              {{title}}
+                              <span class="caret"></span>
+                            </button>
+                            <ul class="dropdown-menu" v-if="showDropDown">
+                              <li><a href="javascript:void(0);"v-on:click="logout()">Logout</a></li>
+                            </ul>
                           </div>
                         </div>
                     </div>

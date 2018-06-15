@@ -25,6 +25,13 @@ export default {
         lastname: state =>`${state.user.profile.lastName}`
       })
     },
+    created: () => {
+      var loc = localStorage.getItem('user-token');
+      if (loc != null) {
+        //authenticated
+      }
+
+    },
     data: () => ({
         form: {
             firstName: null,
@@ -34,7 +41,8 @@ export default {
         userSaved: false,
         sending: false,
         lastUser: null,
-        isShow: false
+        isShow: false,
+        showDropDown : false
     }),
     validations: {
         form: {
@@ -61,6 +69,10 @@ export default {
                 //     'md-invalid': field.$invalid && field.$dirty
                 // }
             // }
+        },
+        toggleDropDown () {
+          console.log('toggleDropDown');
+          this.showDropDown = !this.showDropDown;
         },
         clearForm () {
             this.$v.$reset()

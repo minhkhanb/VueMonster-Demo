@@ -25,6 +25,7 @@
     "vue-axios": "^2.1.1",
     "vue-material": "^1.0.0-beta-10.2",
     "vue-router": "^3.0.1",
+    "vue-select": "^2.4.0",
     "vuelidate": "^0.7.4",
     "vuex": "^3.0.1",
     "write-json-file": "^2.3.0"

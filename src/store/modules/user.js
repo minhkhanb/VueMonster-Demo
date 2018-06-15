@@ -11,15 +11,12 @@ const getters = {
   isProfileLoaded: state => !!state.profile.name,
 }
 
-const setters = (profile) => {
-  state.profile = profile;
-}
-
 const actions = {
   [USER_REQUEST]: ({commit, dispatch}) => {
     commit(USER_REQUEST)
     apiCall({url: 'user/me'})
       .then(resp => {
+        //console.log('===>get user ', resp)
         commit(USER_SUCCESS, resp)
       })
       .catch(resp => {
@@ -42,7 +39,7 @@ const mutations = {
     state.status = 'error'
   },
   [AUTH_LOGOUT]: (state) => {
-    state.profile = {}
+    //state.profile = {}
   }
 }
 
@@ -50,6 +47,5 @@ export default {
   state,
   getters,
   actions,
-  mutations,
-  setters
+  mutations
 }

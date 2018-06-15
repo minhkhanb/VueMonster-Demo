@@ -7,6 +7,7 @@
             </md-card-header>
 
             <md-card-content>
+                <div class="alert alert-danger" v-if="visible" role="alert">{{msg}}</div>
                 <div class="md-layout-item md-small-size-100">
                     <md-field :class="getValidationClass('email')">
                         <label for="email">Email</label>

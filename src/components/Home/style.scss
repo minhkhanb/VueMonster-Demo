@@ -120,3 +120,18 @@ header .notification .separator .btn-group > button:first-child {
   padding-left: 5px;
   padding-right: 5px;
 }
+header .notification .separator .btn-group > button:first-child + div {
+  padding-top: 8px;
+}
+.dropdown-menu {
+  display: block;
+  background: #fff;
+  margin-top: -10px;
+  padding: 0 10px;
+}
+.md-theme-default ul.dropdown-menu li a {
+  color: #191919;
+}
+.md-theme-default ul.dropdown-menu li a:hover {
+  color: #ccc;
+}
