@@ -6,10 +6,7 @@ import {
     maxLength
 } from 'vuelidate/lib/validators'
 
-import {getUsers} from '../../../utils/fetch_data'
-
-import { isLoggedIn, login, logout } from '../../../utils/auth'
-
+import {AUTH_REQUEST} from '../../store/actions/auth'
 
 export default {
     name: 'FormValidation',
@@ -23,7 +20,9 @@ export default {
         sending: false
     }),
     mounted () {
-      this.getUsersData();
+      // if (true) {
+      //   this.$router.push('/profile')
+      // }
     },
     validations: {
         form: {
@@ -52,7 +51,7 @@ export default {
             this.form.email = null;
             this.form.password = null;
         },
-        loginProcess () {
+        loginProcessDone () {
           this.sending = true;
             // Instead of this timeout, here you can call your API
             window.setTimeout(() => {
@@ -60,21 +59,21 @@ export default {
                 this.clearForm();
             }, 1500)
         },
+        login () {
+          const { email, password } = this.form;
+          console.log(email + '-' + password);
+           this.$store.dispatch(AUTH_REQUEST, { email, password }).then(() => {
+             this.$router.push('/profile')
+           })
+        },
         validateUser () {
             this.$v.$touch()
 
             if (!this.$v.$invalid) {
                 console.log(JSON.stringify(this.users, null, 2));
-                this.loginProcess()
+                this.login();
+                this.loginProcessDone();
             }
-        },
-        isLoggedIn () {
-          return isLoggedIn();
-        },
-        getUsersData () {
-          getUsers().then((users) => {
-            this.users = users;
-          });
         }
     }
 }

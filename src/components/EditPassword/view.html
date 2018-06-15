@@ -1,8 +1,8 @@
-<div class="edit_pass">
+<div class="edit_pass" show="isShow">
     <form novalidate class="md-layout" @submit.prevent="validateUser">
         <md-card class="md-layout-item md-size-100 md-small-size-100 formContent">
             <md-card-header>
-                <div class="icon-left">
+                <div class="icon-left" v-on:click="UpdateUserInfo()">
                     <font-awesome-icon icon="arrow-left"></font-awesome-icon>
                 </div>
                 <h2>Edit Password</h2>
@@ -50,7 +50,7 @@
 
             <md-card-actions class="md-alignment-left">
                 <md-button type="submit" class="md-accent btnSubmit" :disabled="sending">Validate</md-button>
-                <md-button type="button" class="md-primary btnEdit" :disabled="sending">Cancel</md-button>
+                <md-button type="button" class="md-primary btnEdit" v-on:click="UpdateUserInfo()" :disabled="sending">Cancel</md-button>
             </md-card-actions>
         </md-card>
     </form>

@@ -5,8 +5,16 @@
 </template>
 
 <script>
+import { USER_REQUEST } from './store/actions/user'
 export default {
-  name: 'App'
+  components: {
+     },
+  name: 'app',
+  created: function () {
+    if (this.$store.getters.isAuthenticated) {
+      this.$store.dispatch(USER_REQUEST)
+    }
+  }
 }
 </script>
 
@@ -17,5 +25,12 @@ export default {
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
   color: #2c3e50;
+}
+body {
+  background: #f8f8fa;
+  overflow-x: hidden;
+}
+.signin h2 {
+  margin-bottom: 52px;
 }
 </style>

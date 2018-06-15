@@ -22,6 +22,7 @@
     "jsonfile": "^4.0.0",
     "jwt-decode": "^2.2.0",
     "vue": "^2.5.16",
+    "vue-axios": "^2.1.1",
     "vue-material": "^1.0.0-beta-10.2",
     "vue-router": "^3.0.1",
     "vuelidate": "^0.7.4",

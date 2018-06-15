@@ -7,12 +7,23 @@ import {
 } from 'vuelidate/lib/validators'
 
 import EditPassword from '../EditPassword/index'
+import { mapGetters, mapState } from 'vuex'
+import { AUTH_LOGOUT } from '../../store/actions/auth';
 
 export default {
     name: 'FormValidation',
     mixins: [validationMixin],
     components: {
       appEditPassWord: EditPassword
+    },
+    computed: {
+      ...mapGetters(['getProfile', 'isAuthenticated']),
+      ...mapState({
+        email: state => `${state.user.profile.email}`,
+        title: state =>`${state.user.profile.title} `,
+        firstname: state =>`${state.user.profile.firstName}`,
+        lastname: state =>`${state.user.profile.lastName}`
+      })
     },
     data: () => ({
         form: {
@@ -22,7 +33,8 @@ export default {
         },
         userSaved: false,
         sending: false,
-        lastUser: null
+        lastUser: null,
+        isShow: false
     }),
     validations: {
         form: {
@@ -42,13 +54,13 @@ export default {
     },
     methods: {
         getValidationClass (fieldName) {
-            const field = this.$v.form[fieldName]
-
-            if (field) {
-                return {
-                    'md-invalid': field.$invalid && field.$dirty
-                }
-            }
+            // const field = this.$v.form[fieldName]
+            //
+            // if (field) {
+                // return {
+                //     'md-invalid': field.$invalid && field.$dirty
+                // }
+            // }
         },
         clearForm () {
             this.$v.$reset()
@@ -61,7 +73,6 @@ export default {
 
             // Instead of this timeout, here you can call your API
             window.setTimeout(() => {
-                this.lastUser = `${this.form.firstName} ${this.form.lastName}`
                 this.userSaved = true
                 this.sending = false
                 this.clearForm()
@@ -73,6 +84,12 @@ export default {
             if (!this.$v.$invalid) {
                 this.saveUser()
             }
+        },
+        editPasswordHandle () {
+          this.isShow = true;
+        },
+        logout () {
+          this.$store.dispatch(AUTH_LOGOUT).then(() => this.$router.push('/'))
         }
     }
 }

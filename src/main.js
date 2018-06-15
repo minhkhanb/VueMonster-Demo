@@ -16,15 +16,29 @@ import 'bootstrap/dist/css/bootstrap.css'
 
 import '../config/fa.config'
 
+import BootstrapVue from 'bootstrap-vue'
+
+import 'bootstrap-vue/dist/bootstrap-vue.css'
+
+import VueAxios from 'vue-axios'
+
+import axios from 'axios'
+
+import store from './store'
+
+Vue.use(VueAxios, axios)
+
 Vue.use(VueMaterial);
 Vue.use(Vuex)
 
+Vue.use(BootstrapVue);
+
 Vue.config.productionTip = false
 
-/* eslint-disable no-new */
 new Vue({
   el: '#app',
   router,
+  store,
+  template: '<App/>',
   components: { App },
-  template: '<App/>'
 })

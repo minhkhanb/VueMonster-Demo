@@ -10,7 +10,7 @@ const CLIENT_ID = 'DDvyJiVbFHerNwrlnsrMuLzZnEywrPIX';
 const CLIENT_DOMAIN = 'khale.auth0.com';
 const REDIRECT = 'http://localhost:8080/callback';
 const SCOPE = 'full_access';
-const AUDIENCE = 'AUDIENCE_ATTRIBUTE';
+const AUDIENCE = 'https://khale.auth0.com/userinfo';
 
 var auth = new auth0.WebAuth({
   clientID: CLIENT_ID,

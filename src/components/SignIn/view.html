@@ -1,4 +1,5 @@
-<div class="content">
+<div class="content signin">
+  <h2><img src="../../assets/logo.png" alt="logo"></h2>
     <form novalidate class="md-layout" @submit.prevent="validateUser">
         <md-card class="md-layout-item md-size-100 md-small-size-100">
             <md-card-header>
@@ -27,7 +28,7 @@
                 <div class="md-layout-item md-small-size-100">
                     <md-button type="submit" class="md-primary btnSubmit" :disabled="sending">Sign In</md-button>
                     <div class="md-layout-item md-small-size-100">
-                        <a href="#">Forgot password?</a>
+                        <a class="forgot" href="#">Forgot password?</a>
                     </div>
                 </div>
             </md-card-content>

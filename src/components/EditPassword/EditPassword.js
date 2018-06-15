@@ -41,6 +41,9 @@ export default {
         }
     },
     methods: {
+        UpdateUserInfo () {
+          this.$parent.isShow = false;
+        },
         getValidationClass (fieldName) {
             const field = this.$v.form[fieldName]
 
